@@ -1,0 +1,23 @@
+{
+
+  env: {
+    type: "go",
+    board_size: 7,
+    lp_every_x_states: 3,
+    lp_pool_size: 5,
+  },
+  discount: .99,
+  episode_runner: {
+    type: "checkers_no_mcts_LP",
+  },
+  training: {
+    learning_rate: .003,
+    replay_buffer: 100000,
+    train_rounds: 10,
+    optimizer: "Adam",
+    network: "mine_mazenet_v1_go",
+    min_trace_to_train: 100,
+
+  },
+
+}

@@ -1,0 +1,30 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="JupyterPackageInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="16">
+            <item index="0" class="java.lang.String" itemvalue="decorator" />
+            <item index="1" class="java.lang.String" itemvalue="networkx" />
+            <item index="2" class="java.lang.String" itemvalue="pyPEG2" />
+            <item index="3" class="java.lang.String" itemvalue="ptan" />
+            <item index="4" class="java.lang.String" itemvalue="opencv-python" />
+            <item index="5" class="java.lang.String" itemvalue="json5" />
+            <item index="6" class="java.lang.String" itemvalue="torch" />
+            <item index="7" class="java.lang.String" itemvalue="pythomata" />
+            <item index="8" class="java.lang.String" itemvalue="numpy" />
+            <item index="9" class="java.lang.String" itemvalue="torchvision" />
+            <item index="10" class="java.lang.String" itemvalue="flloat" />
+            <item index="11" class="java.lang.String" itemvalue="psutil" />
+            <item index="12" class="java.lang.String" itemvalue="tensorflow" />
+            <item index="13" class="java.lang.String" itemvalue="paramiko" />
+            <item index="14" class="java.lang.String" itemvalue="tensorboardX" />
+            <item index="15" class="java.lang.String" itemvalue="gym" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
