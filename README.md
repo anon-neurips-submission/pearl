@@ -1,16 +1,14 @@
 ## PEARL with Boardgames
 
-## boardgames LP 
-
 ### To setup environment:
 
 - Use a conda python 3.7 environment
--`conda create -n agrs python=3.7 && conda activate agrs`
+-`conda create -n pearl python=3.7 && conda activate pearl`
 - `pip install -r requirements.txt`
 - 'Figure out which version of pytorch you need; install from wheel'
+- 'export PYTHONPATH=.'
 
 
-YOU SHOULD PROBABLY MODIFY SLURM/SH files so that you can make sure jsons are right.
 
 you first want to train some LP and some noLP games (can be on separate machines). 
 Make sure you save checkpoints. You can evaluate loss curves and LP gen curves in log dir runs/
@@ -30,6 +28,7 @@ Use the python notebook files to create average curves for each team to compare 
 -Remember to rename run-names based on date so you're not overwriting anything
 -create the checkpoints folder if you don't have one.
 -Optimized for a serialized, one worker train (A2C), but could experiment with more workers
+-You should probably modify SLURM/SH files so that you can make sure jsons are right.
 
 
 # CHESS TRAIN SCRIPTS
@@ -103,4 +102,14 @@ python autograph/play/main_boardgames_LP.py --run-name checkers_noLP_ppo --worke
 #!/bin/bash
 python autograph/play/main_eval.py --run-name checkers_mcts --run-name_versus checkers_mcts_lp  --workers 1 --device cuda:0 --checkpoint checkpoints/checkers/eval/%s
                                         --stop-after 100000 --num-runs 25  --log runs/checkers/eval/%s  autograph/play/config/checkers/checkers_ensemble_eval.json
+
+
+# TRAIN Blind Craftsman
+
+echo CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES
+python autograph/play/maze_nn_aut_LP_double.py --run-name LP_pool_PPO --workers 1 --device cuda:0 --checkpoint checkpoints/lp/lp_ens/%s --num-runs 25 --stop-after 60000 --log runs/ppo/lp/lp_ens_v/%s  autograph/play/config/mine_woodfactory/simple_eval_envs/simple_LP_ensemble.json
+
+# EVAL blind craftsman
+echo CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES
+python autograph/play/maze_nn_aut_LP_double_eval.py --run-name LP_pool_ppo --workers 1 --device cuda:0 --checkpoint checkpoints/lp/lp_ens_221_copy/%s --do-not-save-checkpoint --num-runs 25 --stop-after 5060000 --log runs/ppo/LP_pool/%s  autograph/play/config/mine_woodfactory/simple_eval_envs/simple_LP_ensemble_eval.json
 
